@@ -5,17 +5,35 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import org.springframework.beans.factory.config.SmartInstantiationAwareBeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.yqj.aop.demo.service.TeacherService;
 
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Constructor;
 
 /**
  * @author yaoqijun on 2018-04-08.
  */
 @Component
 @Slf4j
-public class LocalInstanceBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
+public class LocalInstanceBeanPostProcessor implements SmartInstantiationAwareBeanPostProcessor {
+
+    @Override
+    public Class<?> predictBeanType(Class<?> beanClass, String beanName) throws BeansException {
+        return null;
+    }
+
+    @Override
+    public Constructor<?>[] determineCandidateConstructors(Class<?> beanClass, String beanName) throws BeansException {
+        return null;
+    }
+
+    @Override
+    public Object getEarlyBeanReference(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         if (beanClass.equals(TeacherService.class)){
