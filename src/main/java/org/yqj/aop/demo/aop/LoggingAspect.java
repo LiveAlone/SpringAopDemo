@@ -1,5 +1,6 @@
 package org.yqj.aop.demo.aop;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,7 +12,12 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
+@Slf4j
 public class LoggingAspect {
+
+    public LoggingAspect(){
+        log.info("logging aspect construct ... ");
+    }
 
     @Before("execution(* org.yqj.aop.demo.service..*Service.*(..))")
     public void logServiceAccessBefore(JoinPoint joinPoint) {
