@@ -19,14 +19,14 @@ public class LoggingAspect {
         log.info("logging aspect construct ... ");
     }
 
-    @Before("execution(* org.yqj.aop.demo.service..*Service.*(..))")
+    @Before(value = "execution(* org.yqj.aop.demo.service..*Service.*(..))")
     public void logServiceAccessBefore(JoinPoint joinPoint) {
-        System.out.println("Before: " + joinPoint);
+        log.info("Before: " + joinPoint);
     }
 
-    @AfterReturning("execution(* org.yqj.aop.demo.service..*Service.*(..))")
+    @AfterReturning(value = "execution(* org.yqj.aop.demo.service..*Service.*(..))")
     public void logServiceAccessAfter(JoinPoint joinPoint) {
-        System.out.println("Completed: " + joinPoint);
+        log.info("Completed: " + joinPoint);
     }
 
 }
