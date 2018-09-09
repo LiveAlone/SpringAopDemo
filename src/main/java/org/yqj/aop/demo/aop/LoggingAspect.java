@@ -34,10 +34,6 @@ public class LoggingAspect {
         log.info("around after execute proceed");
     }
 
-    public LoggingAspect(){
-        log.info("logging aspect construct ... ");
-    }
-
     @Before(value = "execution(* org.yqj.aop.demo.service..*Service.*(..)) && args(a1)", argNames = "a1")
     public void logServiceAccessBefore(JoinPoint joinPoint, String a1) {
         log.info("************** Before arg names is : " + a1);
@@ -59,5 +55,9 @@ public class LoggingAspect {
     @AfterThrowing(value = "execution(* org.yqj.aop.demo.service..*Service.*(..))", throwing = "ex")
     public void logServiceAccessAfterReturningThrow(JoinPoint joinPoint, Exception ex) {
         log.info("************** after returning throwing: " + joinPoint, ex);
+    }
+
+    public void notAopMethodContent(String content){
+        log.info("************* not aop method content: " + content);
     }
 }
