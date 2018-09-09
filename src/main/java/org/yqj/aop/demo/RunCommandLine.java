@@ -20,6 +20,7 @@ public class RunCommandLine implements CommandLineRunner{
     private TeacherServiceImpl teacherService;
 
     public void run(String... args) throws Exception {
-        log.info("teacher service get teacher name :{}", teacherService.gainTeacherName());
+//        log.info("teacher service get teacher name :{}", teacherService.helloWorldName("yaoqijun"));
+        log.info("teacher service get teacher name :{}", teacherService.helloWorldWithException("yaoqijun"));
     }
 }

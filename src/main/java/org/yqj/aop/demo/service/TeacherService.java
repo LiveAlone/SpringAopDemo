@@ -6,6 +6,8 @@ package org.yqj.aop.demo.service;
  */
 public interface TeacherService {
 
-    String gainTeacherName();
+    String helloWorldName(String name);
+
+    String helloWorldWithException(String name);
 
 }
