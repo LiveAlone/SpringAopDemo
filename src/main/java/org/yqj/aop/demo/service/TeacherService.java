@@ -1,15 +1,13 @@
 package org.yqj.aop.demo.service;
 
-import org.springframework.stereotype.Service;
-
 /**
- * @author yaoqijun on 2018-04-08.
+ * Created by yaoqijun on 2018/9/9.
+ * email: yaoqijunmail@foxmail.com
  */
-@Service
-public class TeacherService {
+public interface TeacherService {
 
-    public String gainTeacherName(){
-        return "teacherName";
-    }
+    String helloWorldName(String name);
+
+    String helloWorldWithException(String name);
 
 }

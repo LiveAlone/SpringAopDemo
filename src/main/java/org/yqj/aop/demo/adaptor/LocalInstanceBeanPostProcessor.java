@@ -8,7 +8,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.SmartInstantiationAwareBeanPostProcessor;
 import org.springframework.stereotype.Component;
-import org.yqj.aop.demo.service.TeacherService;
+import org.yqj.aop.demo.service.impl.TeacherServiceImpl;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
@@ -41,7 +41,7 @@ public class LocalInstanceBeanPostProcessor implements SmartInstantiationAwareBe
 
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-        if (beanClass.equals(TeacherService.class)){
+        if (beanClass.equals(TeacherServiceImpl.class)){
             log.info("******* teacherService before instance before instance");
         }
         return null;
@@ -49,7 +49,7 @@ public class LocalInstanceBeanPostProcessor implements SmartInstantiationAwareBe
 
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-        if (bean.getClass() == TeacherService.class){
+        if (bean.getClass() == TeacherServiceImpl.class){
             log.info("****** teacherService after instance ");
         }
         return true;
@@ -57,7 +57,7 @@ public class LocalInstanceBeanPostProcessor implements SmartInstantiationAwareBe
 
     @Override
     public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
-        if (bean.getClass() == TeacherService.class){
+        if (bean.getClass() == TeacherServiceImpl.class){
             log.info("******* teacher service post process property values ");
         }
         return pvs;
@@ -65,7 +65,7 @@ public class LocalInstanceBeanPostProcessor implements SmartInstantiationAwareBe
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if (bean.getClass() == TeacherService.class){
+        if (bean.getClass() == TeacherServiceImpl.class){
             log.info("******* teacher service before init");
         }
         return bean;
@@ -73,7 +73,7 @@ public class LocalInstanceBeanPostProcessor implements SmartInstantiationAwareBe
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if (AopUtils.getTargetClass(bean) == TeacherService.class) {
+        if (AopUtils.getTargetClass(bean) == TeacherServiceImpl.class) {
             log.info("******* teacher service after init");
         }
         return bean;

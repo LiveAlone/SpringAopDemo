@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import org.yqj.aop.demo.service.TeacherService;
+import org.yqj.aop.demo.service.impl.TeacherServiceImpl;
 
 /**
  * Created by yaoqijun.
@@ -18,12 +18,13 @@ import org.yqj.aop.demo.service.TeacherService;
 public class RunCommandLine implements CommandLineRunner{
 
     @Autowired
-    private TeacherService teacherService;
+    private TeacherServiceImpl teacherService;
 
     @Autowired
     private ApplicationContext applicationContext;
 
     public void run(String... args) throws Exception {
-        log.info("teacher service get teacher name :{}", teacherService.gainTeacherName());
+//        log.info("teacher service get teacher name :{}", teacherService.helloWorldName("yaoqijun"));
+        log.info("teacher service get teacher name :{}", teacherService.helloWorldWithException("yaoqijun"));
     }
 }
