@@ -1,3 +1,14 @@
 logging:
   level:
     root: INFO
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+
+
+
+
+
+
+
